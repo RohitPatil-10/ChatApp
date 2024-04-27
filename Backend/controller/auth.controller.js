@@ -57,9 +57,9 @@ export const signin=async (req,res)=>{
 
     res.status(200).json({
         _id: user._id,
-        fullName: user.fullname,
+        fullname: user.fullname,
         username: user.username,
-        profilePic: user.profilepic,
+        profilepic: user.profilepic,
     });
 } catch (error) {
     console.log("Error in login controller", error.message);

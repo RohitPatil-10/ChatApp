@@ -6,7 +6,7 @@ const app=express();
 const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
-		origin: "https://chatapp-5pm2.onrender.com/",
+		origin: "https://chatapp-1lrx.onrender.com/",
 		methods: ["GET", "POST"],
 	},
 });

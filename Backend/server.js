@@ -11,8 +11,9 @@ import messageRoutes from "./route/message.route.js"
 import userRoutes from "./route/user.routes.js"
 
 import connectToMongoDB from "./DB/connectToMongoDB.js";
+import {app,server,io} from "./socket/Socket.js"
 dotenv.config();
-const app=express();
+// const app=express();
 
 //This help to parse json data comming from user.......(from req.body)
 app.use(express.json()); 
@@ -40,7 +41,7 @@ app.get("/api/auth/signout",(req,res)=>{
 app.use("/api/auth",useRoute)
 app.use("/api/messages",messageRoutes);
 app.use("/api/users",userRoutes);
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     connectToMongoDB();
     console.log(`Listening at port ${PORT}..........`)
 })

@@ -12,8 +12,10 @@ import userRoutes from "./route/user.routes.js"
 
 import connectToMongoDB from "./DB/connectToMongoDB.js";
 import {app,server,io} from "./socket/Socket.js"
+
+//This will not work untill u need external package for it called //....dotenv....//
+const PORT=process.env.PORT || 5000;
 dotenv.config();
-// const app=express();
 
 //This help to parse json data comming from user.......(from req.body)
 app.use(express.json()); 
@@ -21,12 +23,11 @@ app.use(express.json());
 //To parse the cookie to check user is logedin or not
 app.use(cookieParser());
 
-//This will not work untill u need external package for it called //....dotenv....//
-const PORT=process.env.PORT || 5000;
-app.get("/",(req,res)=>{
-    res.send("Welcome To Home Page")
-    console.log("Home")
-})
+
+// app.get("/",(req,res)=>{
+//     res.send("Welcome To Home Page")
+//     console.log("Home")
+// })
 /*
 app.get("/api/auth/signup",(req,res)=>{
     res.send("<h1>Sign Up</h1>")

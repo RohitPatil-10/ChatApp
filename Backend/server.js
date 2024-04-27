@@ -2,6 +2,7 @@
 // const dotenv=require("dotenv");
 /*                But we can use here import(ES6) instead of require as it more easy for import and export of components
 just we have to include 'type':'module' in package.json.........         */
+import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
@@ -15,6 +16,9 @@ import {app,server,io} from "./socket/Socket.js"
 
 //This will not work untill u need external package for it called //....dotenv....//
 const PORT=process.env.PORT || 5000;
+const __dirname = path.resolve();
+
+
 dotenv.config();
 
 //This help to parse json data comming from user.......(from req.body)
@@ -42,6 +46,15 @@ app.get("/api/auth/signout",(req,res)=>{
 app.use("/api/auth",useRoute)
 app.use("/api/messages",messageRoutes);
 app.use("/api/users",userRoutes);
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
+
+
+
 server.listen(PORT,()=>{
     connectToMongoDB();
     console.log(`Listening at port ${PORT}..........`)

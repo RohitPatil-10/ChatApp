@@ -8,7 +8,7 @@ export default defineConfig({
 		port: 3000,
 		proxy: {
 			"/api": {
-				target: "https://chatapp-yzjr.onrender.com/",
+				target: "https://localhost:5000/",
 			},
 		},
 	},
